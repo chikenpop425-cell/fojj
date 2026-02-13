@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For Jerusha</title>
+    <style>
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            overflow: hidden; background-color: #fff0f3;
+            font-family: -apple-system, system-ui, sans-serif;
+            transition: background-color 0.4s;
+        }
+
+        #app-wrapper {
+            display: flex; flex-direction: column; justify-content: center;
+            align-items: center; height: 100%; padding: 30px; text-align: center;
+        }
+
+        .slide { display: none; width: 100%; animation: fadeIn 0.5s ease-out; z-index: 2; }
+        .active { display: flex; flex-direction: column; align-items: center; }
+
+        h1 { font-size: 1.6rem; color: #594d5b; line-height: 1.3; margin-bottom: 15px; }
+        p { color: #777; font-size: 0.95rem; line-height: 1.5; }
+
+        .polaroid {
+            background: white; padding: 10px 10px 40px 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: rotate(-2deg); margin: 20px 0;
+            width: 90%; max-width: 260px;
+        }
+        .polaroid img { width: 100%; height: 220px; object-fit: cover; }
+
+        .malicious-bg { background-color: #330000 !important; }
+        .malicious-text { color: #ff0000; font-weight: 900; font-size: 2.2rem; animation: blink 0.2s infinite; }
+
+        .glitch-bg { background-color: black !important; animation: red-flicker 0.15s infinite; }
+        @keyframes red-flicker {
+            0%, 100% { background-color: #000; }
+            50% { background-color: #1a0000; }
+        }
+
+        .glitch-text {
+            font-size: 1.8rem; font-weight: bold; color: #ff0000;
+            text-shadow: 2px 2px #550000; animation: glitch-shake 0.2s infinite;
+        }
+        .counter-text { font-family: monospace; font-size: 4.5rem; color: #ff0000; text-shadow: 0 0 15px #ff0000; margin: 20px 0; }
+
+        .map-frame {
+            width: 100%; height: 280px; border-radius: 15px;
+            border: 3px solid #ff4d6d; overflow: hidden; margin: 15px 0;
+        }
+
+        .btn {
+            background-color: #ff4d6d; color: white; border: none;
+            padding: 18px 0; border-radius: 50px; font-size: 1.1rem;
+            font-weight: bold; width: 85%; margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+        }
+
+        .heart { position: absolute; color: #ff4d6d; font-size: 22px; top: -20px; animation: fall linear forwards; pointer-events: none; }
+
+        @keyframes glitch-shake {
+            0% { transform: translate(0); }
+            25% { transform: translate(-3px, 2px); }
+            50% { transform: translate(3px, -2px); }
+            100% { transform: translate(0); }
+        }
+        @keyframes fall { to { transform: translateY(105vh); } }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div id="app-wrapper">
+        <audio id="bgMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
+
+        <div class="slide active"><h1>Hello Jerusha!</h1><button class="btn" onclick="next()">Next</button></div>
+        <div class="slide"><h1>Hope you're doing well</h1><button class="btn" onclick="next()">Next</button></div>
+        <div class="slide"><h1>I'm guessing ur almost done with physics...</h1><button class="btn" onclick="next()">Next</button></div>
+        <div class="slide"><h1>But I didn't wanna bother you that much so just wanted to drop by and say something.</h1><button class="btn" onclick="next()">Next</button></div>
+
+        <div class="slide">
+            <div class="polaroid"><img src="us1.jpg"></div>
+            <p>Look how ridiculous I look in these pictures but you ever so always manage to look so pretty.</p>
+            <button class="btn" onclick="next()">Keep Reading</button>
+        </div>
+
+        <div class="slide" id="malicious-slide">
+            <div class="malicious-text">MALICIOUS INPUT ADDED</div>
+        </div>
+
+        <div class="slide" id="glitch-slide">
+            <div class="glitch-text">LOCATION DETECTED...</div>
+            <div id="loading-counter" class="counter-text">0%</div>
+            <p style="color: #ff0000; font-family: monospace;">LOCATION OVERRIDE IN PROGRESS: GANDA TOWER AL NAHDA</p>
+        </div>
+
+        <div class="slide">
+            <h1 style="color: #d90429; font-weight: 900;">⚠️ WARNING ⚠️</h1>
+            <h1 style="margin: 5px 0;">DONUTS ON THE WAY</h1>
+            <div class="map-frame">
+                <iframe width="100%" height="100%" style="border:0" loading="lazy" allowfullscreen 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.3263013825!2d55.3855!3d25.3265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5bc68943799d%3A0xc486259f6e2f183c!2sGanda%20Tower!5e0!3m2!1sen!2sae!4v1707880000000!5m2!1sen!2sae">
+                </iframe>
+            </div>
+            <button class="btn" onclick="next()">Accept Delivery</button>
+        </div>
+
+        <div class="slide">
+            <h1 style="font-size: 4.5rem; margin-bottom: 0;">HAH!</h1>
+            <h1 style="margin-top: 10px;">I PROMISED I WOULDN'T DO SMN LIKE THAT.</h1>
+            <button class="btn" onclick="next()">Wait, what?</button>
+        </div>
+
+        <div class="slide">
+            <h1 style="font-size: 2.2rem; color: #ff4d6d;">Happy Valentine's Day! ❤️</h1>
+            <p style="color: #594d5b; padding: 0 15px;">
+                "I know dealing with my fanatics is tough, but you got this girl. Just wanted to make you smile for a second. You mean something to me, Jerusha! (if i say something more youll consider that lovebombing or whatnot)"
+            </p>
+        </div>
+    </div>
+
+    <script>
+        let current = 0;
+        const slides = document.querySelectorAll('.slide');
+        const audio = document.getElementById('bgMusic');
+        let autoPlayTimer;
+
+        function runCounter() {
+            let count = 0;
+            const counterElement = document.getElementById('loading-counter');
+            let interval = setInterval(() => {
+                count += Math.floor(Math.random() * 3) + 1;
+                if (count >= 100) {
+                    count = 100;
+                    clearInterval(interval);
+                    setTimeout(next, 1200); 
+                }
+                counterElement.innerText = count + "%";
+            }, 100);
+        }
+
+        function next() {
+            clearTimeout(autoPlayTimer);
+            if(current === 0) audio.play().catch(e => console.log("Music blocked"));
+
+            slides[current].classList.remove('active');
+            current++;
+
+            if (current < slides.length) {
+                slides[current].classList.add('active');
+
+                if(current === 5) {
+                    document.body.classList.add('malicious-bg');
+                    autoPlayTimer = setTimeout(next, 3000);
+                } 
+                else if(current === 6) {
+                    document.body.classList.remove('malicious-bg');
+                    document.body.classList.add('glitch-bg');
+                    runCounter();
+                } 
+                else {
+                    document.body.classList.remove('malicious-bg');
+                    document.body.classList.remove('glitch-bg');
+                }
+
+                if(current === 8) startHearts(); 
+                
+                if (current < slides.length - 1 && current !== 5 && current !== 6) {
+                    autoPlayTimer = setTimeout(next, 20000);
+                }
+            }
+        }
+
+        autoPlayTimer = setTimeout(next, 20000);
+
+        function startHearts() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
